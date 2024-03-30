@@ -1,5 +1,3 @@
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -7,23 +5,29 @@ import org.junit.Test;
 import org.junit.Before;
 
 public class TestCompute {
-  Compute c;
-  MessageQueue queue;
+  //Compute c;
+  //MessageQueue queue;
 
+  /* 
   @Before
   public void setUp() {
     queue = mock(MessageQueue.class);
     c = new Compute(queue);
   }
+  */
 
   @Test
   public void test_emptyQueue(){
+    MessageQueue queue = mock(MessageQueue.class);
+    Compute c = new Compute(queue);
     when(queue.size()).thenReturn(0);
     assertEquals(-1,c.countNumberOfOccurrences("string1"));
   }
 
   @Test
   public void test_elementNotFound(){
+    MessageQueue queue = mock(MessageQueue.class);
+    Compute c = new Compute(queue);
     when(queue.size()).thenReturn(2);
     when(queue.contains("string2")).thenReturn(false);
     assertEquals(0,c.countNumberOfOccurrences("string2"));
@@ -31,6 +35,8 @@ public class TestCompute {
 
   @Test
   public void test_ElementFound(){
+    MessageQueue queue = mock(MessageQueue.class);
+    Compute c = new Compute(queue);
     when(queue.size()).thenReturn(4);
     when(queue.contains("string3")).thenReturn(true);
     when(queue.getAt(0)).thenReturn("string3");
